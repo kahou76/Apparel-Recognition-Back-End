@@ -1,9 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 //for parsing the res.body.email
 app.use(bodyParser.json());
+app.use(cors());
 
 const db = {
     users: [
@@ -44,6 +46,7 @@ app.post('/signin', (req, res) =>{
 
 app.post('/register', (req, res) => {
     const { username, name, password} = req.body;
+    
     db.users.push({
         id: '125',
         name: 'april',
