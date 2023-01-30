@@ -1,6 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const knex = require('knex')
+
+const pgg = knex({
+    client: 'pg',
+    connection: {
+      host : '127.0.0.1',
+      port : 3306,
+      user : 'silas',
+      password : '',
+      database : 'smart-brain'
+    }
+  });
+
+pgg.select('*').from('users');
 
 const app = express();
 //for parsing the res.body.email
